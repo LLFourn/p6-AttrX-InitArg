@@ -91,6 +91,10 @@ start as its default value.
 
 ## Usage Notes
 
+### roles
+
+doesn't work for roles yet. Sorry!
+
 ### .gist and .perl
 
 This module modfiies .gist and .perl (in a fairly ugly way) so that
