@@ -37,10 +37,11 @@ concepts of *public* and *private* attributes. It doesn't allow for:
 1. Attributes that can be set by `.bless` but do not have accessors
 2. Attributes that cannot be set by `.bless` but do have accessors
 
-Which isn't to say that it isn't flexible enough to create attributes
-that behave in the above way, it just involves a lot of
-boilerplate. This modules takes care of that in the same way as Perl 5's
-[Moose](https://metacpan.org/pod/Moose). Moose has an attribute trait called
+Perl 6 OO is flexible enough to create attributes that behave in the
+above way, it just involves a lot of boilerplate. This module takes
+care of that in the same way as Perl 5's
+[Moose](https://metacpan.org/pod/Moose). Moose has an attribute trait
+called
 [init_arg](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual/Attributes.pod#Constructor-parameters-init_arg)
 which this module attempts to emulate.
 
@@ -93,7 +94,7 @@ start as its default value.
 
 ### roles
 
-doesn't work for roles yet. Sorry!
+doesn't work in roles yet. Sorry!
 
 ### .gist and .perl
 
@@ -109,6 +110,6 @@ time the object is creadted until I've done some optimization.
 
 ### Is this even a good idea?
 
-It depends. If you are using no-argument form of `init-arg` with `$!`
-attributes, make sure you have considered just usign `$.`. Is public
+It depends. If you are using the no-argument form of `init-arg` with `$!`
+attributes, make sure you have considered just using `$.`. Is public
 read-only not good enough? Does it **have** to have no accessors?
