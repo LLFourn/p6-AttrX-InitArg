@@ -19,10 +19,10 @@ class SecretEnvoy {
 my $msg = SecretEnvoy.new(
     message => 'TOP SECRET',
     messenger => 'BatMan',
-    steed => 'Bat-Mobile'
+    steed => 'Bat-Mobile' # this one won't work
 );
 
-say so $msg.can('message') #-> False
+say so $msg.can('message'); #-> False
 say $msg.get-message('opensesame'); #-> TOP SECRET
 say $msg.steed #-> Shadowfax;
 say $msg.rider #-> Batman;
@@ -34,13 +34,13 @@ say $msg.rider #-> Batman;
 Perl 6 is presently quite opinionated about the
 concepts of *public* and *private* attributes. It doesn't allow for:
 
-1. Attributes that can be set by `.new` but do not have accessors
-2. Attributes that cannot be set by `.new` but do have accessors
+1. Attributes that can be set by `.bless` but do not have accessors
+2. Attributes that cannot be set by `.bless` but do have accessors
 
 Which isn't to say that it isn't flexible enough to create attributes
 that behave in the above way, it just involves a lot of
 boilerplate. This modules takes care of that in the same way as Perl 5's
-[Moose](https://metacpan.org/release/Moose). Moose has an attribute trait called
+[Moose](https://metacpan.org/pod/Moose). Moose has an attribute trait called
 [init_arg](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual/Attributes.pod#Constructor-parameters-init_arg)
 which this module attempts to emulate.
 
@@ -56,7 +56,9 @@ class Foo {
 Foo.new( attr => 'win' ).works #-> win
 ```
 
-This is intended to be used with `$!` attributes. Arguments matching
+This is intended to be used with `$!` attributes. The attribute will
+be set by `.bless` as if it were a `$.` attribute but won't have
+accessors set up for it as usual.
 
 ### With a string argument
 
@@ -68,9 +70,9 @@ say Foo.new(other-name => "bar").attr #-> bar
 say Foo.new(attr => "bar").attr #-> (Any)
 ```
 
-For use with both `$!` and `$.` attributes. Sets their constructor
-name. `$.` attributes will no longer be set with their usual
-name in `.bless`, but it won't `die` if you try.
+Sets the attribute's argument name in `.bless` for both `$!` and `$.`
+attributes.  name. `$.` attributes will no longer be set with their
+usual name in `.bless`, but it won't `die` if you try.
 
 ### With a `False` argument
 
@@ -104,6 +106,5 @@ time the object is creadted until I've done some optimization.
 ### Is this even a good idea?
 
 It depends. If you are using no-argument form of `init-arg` with `$!`
-attributes, make sure you have considered just making the attribute
-a `$.` attribute. Is public read-only not good enough? Does it
-**have** to have no accessors?
+attributes, make sure you have considered just usign `$.`. Is public
+read-only not good enough? Does it **have** to have no accessors?
