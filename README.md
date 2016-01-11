@@ -114,3 +114,8 @@ time the object is creadted until I've done some optimization.
 It depends. If you are using the no-argument form of `init-arg` with `$!`
 attributes, make sure you have considered just using `$.`. Is public
 read-only not good enough? Does it **have** to have no accessors?
+
+### BUILDALL
+
+This trait creates a custom BUILDALL on the role/class containing the
+trait. If you write your own one this won't work atm.

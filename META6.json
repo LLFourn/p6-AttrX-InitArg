@@ -5,7 +5,7 @@
     "description" : "Moose-like init-arg attribute trait for Perl 6",
     "authors"     : ["Lloyd Fournier"],
     "provides"    : {
-        "AttrX::InitArg" : "lib/AttrX::InitArg"
+        "AttrX::InitArg" : "lib/AttrX/InitArg.pm6"
     },
     "depends" : [],
     "resources" : [],
