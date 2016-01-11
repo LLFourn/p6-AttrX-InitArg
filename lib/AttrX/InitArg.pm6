@@ -65,9 +65,7 @@ multi sub trait_mod:<is>(Attribute $attr, :$init-arg!) is export {
         when not .so { $attr.null-init-arg = True }
     }
 
-    given $attr.package {
-        # can't use .does here because we haven't composed it yet.
-        .^add_role(InitArgContainer) unless .^roles_to_compose.first(InitArgContainer) !=== Nil;
-;
-    }
+    # XXX: HACK -- it should use $attr.package but this doesn't work in roles atm
+    # can't use .does here because we haven't composed it yet.
+    $*PACKAGE.^add_role(InitArgContainer) unless $*PACKAGE.^roles_to_compose.first(InitArgContainer) !=== Nil;
 }

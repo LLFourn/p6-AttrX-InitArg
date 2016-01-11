@@ -94,7 +94,8 @@ start as its default value.
 
 ### roles
 
-doesn't work in roles yet. Sorry!
+~~doesn't work in roles yet. Sorry!~~
+It works inside roles too!
 
 ### .gist and .perl
 
