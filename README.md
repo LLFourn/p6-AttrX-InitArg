@@ -1,4 +1,4 @@
-# AttrX::InitArg
+# AttrX::InitArg [![Build Status](https://travis-ci.org/LLFourn/p6-AttrX-InitArg.svg?branch=master)](https://travis-ci.org/LLFourn/p6-AttrX-InitArg)
 
 Moose like `init_arg` for Perl 6
 
